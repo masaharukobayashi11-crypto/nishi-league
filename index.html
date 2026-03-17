@@ -476,25 +476,31 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--cream); color:var
 
   <div id="page-new-schedule" class="page">
     <div class="page-wrap">
-      <div class="page-header">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e4070" stroke-width="1.8" stroke-linecap="round">
-          <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-        </svg>
-        <div><div class="page-title">試合日程②</div><div class="page-sub">3月〜4月 全試合スケジュール</div></div>
+      <div class="page-header" style="justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e4070" stroke-width="1.8" stroke-linecap="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <div><div class="page-title">試合日程</div><div class="page-sub">大泉西リーグ 2026</div></div>
+        </div>
+        <div id="schedule-count" style="font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;"></div>
       </div>
-      <div style="padding:8px 12px;background:var(--white);border-bottom:1px solid var(--warm-gray);display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0;">
-        <button onclick="filterSchedule('all')" class="sched-filter active" data-team="all" style="font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--navy);background:var(--navy);color:var(--white);cursor:pointer;font-weight:600;">全て</button>
-        <button onclick="filterSchedule('ペンギンズ')" class="sched-filter" data-team="ペンギンズ" style="font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">ペンギンズ</button>
-        <button onclick="filterSchedule('アローズ')" class="sched-filter" data-team="アローズ" style="font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">アローズ</button>
-        <button onclick="filterSchedule('リラックス')" class="sched-filter" data-team="リラックス" style="font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">リラックス</button>
-        <button onclick="filterSchedule('BIG4')" class="sched-filter" data-team="BIG4" style="font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">BIG4</button>
-        <button onclick="filterSchedule('バッカス')" class="sched-filter" data-team="バッカス" style="font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">バッカス</button>
-        <button onclick="filterSchedule('サザンズ')" class="sched-filter" data-team="サザンズ" style="font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">サザンズ</button>
-        <button onclick="filterSchedule('パピーズ')" class="sched-filter" data-team="パピーズ" style="font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">パピーズ</button>
-        <button onclick="filterSchedule('サンダース')" class="sched-filter" data-team="サンダース" style="font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">サンダース</button>
-        <button onclick="filterSchedule('桜インパルス')" class="sched-filter" data-team="桜インパルス" style="font-size:10px;padding:4px 10px;border-radius:12px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">桜インパルス</button>
+      <div style="padding:10px 16px 8px;background:var(--white);border-bottom:1px solid var(--warm-gray);flex-shrink:0;">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.15em;color:var(--text-light);margin-bottom:8px;">TEAM FILTER <span style="font-weight:400;letter-spacing:0.05em;">— 出場・審判まとめて絞り込み</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="filterSchedule('all')" class="sched-filter active" data-team="all" style="font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--navy);background:var(--navy);color:var(--white);cursor:pointer;font-weight:600;">全試合</button>
+          <button onclick="filterSchedule('ペンギンズ')" class="sched-filter" data-team="ペンギンズ" style="font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">ペンギンズ</button>
+          <button onclick="filterSchedule('アローズ')" class="sched-filter" data-team="アローズ" style="font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">アローズ</button>
+          <button onclick="filterSchedule('リラックス')" class="sched-filter" data-team="リラックス" style="font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">リラックス</button>
+          <button onclick="filterSchedule('BIG4')" class="sched-filter" data-team="BIG4" style="font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">BIG4</button>
+          <button onclick="filterSchedule('バッカス')" class="sched-filter" data-team="バッカス" style="font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">バッカス</button>
+          <button onclick="filterSchedule('サザンズ')" class="sched-filter" data-team="サザンズ" style="font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">サザンズ</button>
+          <button onclick="filterSchedule('パピーズ')" class="sched-filter" data-team="パピーズ" style="font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">パピーズ</button>
+          <button onclick="filterSchedule('サンダース')" class="sched-filter" data-team="サンダース" style="font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">サンダース</button>
+          <button onclick="filterSchedule('桜インパルス')" class="sched-filter" data-team="桜インパルス" style="font-size:10px;padding:5px 12px;border-radius:14px;border:1px solid var(--warm-gray);background:var(--white);color:var(--text-mid);cursor:pointer;font-weight:500;">桜インパルス</button>
+        </div>
       </div>
-      <div id="schedule-list" style="overflow-y:auto;flex:1;background:#f5f2eb;padding:12px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;">
+      <div id="schedule-list" style="overflow-y:auto;flex:1;background:#f5f2eb;padding:16px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;">
       </div>
     </div>
   </div>
@@ -544,11 +550,11 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--cream); color:var
     <svg viewBox="0 0 24 24" fill="none" stroke="#1a2742" stroke-width="1.8" stroke-linecap="round"><path d="M3 9L12 3L21 9V21H15V15H9V21H3V9Z"/></svg>
     <span class="nav-label">ホーム</span>
   </button>
-  <button class="nav-btn" id="nav-schedule" onclick="switchPage('schedule')">
+  <button class="nav-btn" id="nav-new-schedule" onclick="switchPage('new-schedule')">
     <svg viewBox="0 0 24 24" fill="none" stroke="#1a2742" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
     <span class="nav-label">日程①</span>
   </button>
-  <button class="nav-btn" id="nav-new-schedule" onclick="switchPage('new-schedule')">
+  <button class="nav-btn" id="nav-schedule" onclick="switchPage('schedule')">
     <svg viewBox="0 0 24 24" fill="none" stroke="#1a2742" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
     <span class="nav-label">日程②</span>
   </button>
@@ -605,8 +611,14 @@ var scheduleData = [
   {date:'4/26（日）',special:'区民大会',score:''}
 ];
 
+function getMonth(dateStr) {
+  var m = dateStr.match(/^(\d+)\//);
+  return m ? m[1] : '';
+}
+
 function renderSchedule(team) {
   var list = document.getElementById('schedule-list');
+  var countEl = document.getElementById('schedule-count');
   if (!list) return;
   var filtered = scheduleData;
   if (team && team !== 'all') {
@@ -614,37 +626,64 @@ function renderSchedule(team) {
       return g.home === team || g.away === team || g.ref === team;
     });
   }
+  var matchCount = filtered.filter(function(g) { return !g.special || g.special === '調整中'; }).length;
+  if (countEl) countEl.textContent = matchCount + '試合';
   var html = '';
   var lastDate = '';
+  var lastMonth = '';
   for (var i = 0; i < filtered.length; i++) {
     var g = filtered[i];
+    var curMonth = getMonth(g.date);
+    if (curMonth !== lastMonth) {
+      if (lastDate) html += '</div>';
+      lastDate = '';
+      html += '<div style="display:flex;align-items:center;gap:12px;margin:16px 0 12px;"><div style="flex:1;height:1px;background:#c9a84c;"></div><span style="font-size:13px;font-weight:700;color:var(--navy);white-space:nowrap;">' + curMonth + '月</span><div style="flex:1;height:1px;background:#c9a84c;"></div></div>';
+      lastMonth = curMonth;
+    }
     if (g.date !== lastDate) {
       if (lastDate) html += '</div>';
-      html += '<div style="margin-bottom:12px;">';
-      html += '<div style="background:linear-gradient(135deg,#b8860b,#daa520);color:#1a2742;padding:6px 12px;border-radius:4px 4px 0 0;font-size:12px;font-weight:700;letter-spacing:0.05em;">' + g.date + '</div>';
+      html += '<div style="margin-bottom:16px;">';
+      html += '<div style="background:linear-gradient(135deg,#b8860b,#daa520);color:#1a2742;padding:10px 14px;border-radius:6px 6px 0 0;font-size:14px;font-weight:700;letter-spacing:0.05em;">' + g.date + '</div>';
       lastDate = g.date;
     }
-    html += '<div style="background:var(--white);padding:10px 12px;border:1px solid var(--warm-gray);border-top:none;display:flex;align-items:center;justify-content:space-between;gap:8px;">';
+    html += '<div style="background:var(--white);padding:12px 14px;border:1px solid var(--warm-gray);border-top:none;">';
     if (g.special === '区民大会') {
-      html += '<div style="flex:1;text-align:center;font-size:13px;font-weight:700;color:var(--navy);">区民大会</div>';
+      html += '<div style="text-align:center;font-size:14px;font-weight:700;color:var(--navy);padding:4px 0;">区民大会</div>';
     } else if (g.special === '調整中') {
-      html += '<div style="font-size:11px;color:var(--text-mid);font-weight:500;">' + g.venue + '</div>';
+      html += '<div style="display:flex;align-items:center;gap:12px;">';
+      html += '<div style="min-width:80px;"><div style="font-size:12px;font-weight:700;color:var(--text-dark);">' + (g.venue ? g.venue.split(' ')[0] : '') + '</div><div style="font-size:10px;color:var(--text-light);">' + (g.venue ? g.venue.split(' ')[1] || '' : '') + '</div></div>';
       html += '<div style="flex:1;text-align:center;font-size:12px;color:var(--text-light);font-style:italic;">調整中</div>';
-    } else {
-      html += '<div style="font-size:11px;color:var(--text-mid);font-weight:500;min-width:80px;">' + g.venue + '</div>';
-      html += '<div style="flex:1;text-align:center;">';
-      html += '<div style="display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;">';
-      html += '<span style="font-size:10px;background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:10px;font-weight:600;">' + g.home + '</span>';
-      if (g.score) {
-        html += '<span style="font-size:13px;font-weight:700;color:var(--navy);">' + g.score + '</span>';
-      } else {
-        html += '<span style="font-size:11px;color:var(--text-light);font-weight:400;">vs</span>';
-      }
-      html += '<span style="font-size:10px;background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:10px;font-weight:600;">' + g.away + '</span>';
       html += '</div>';
-      html += '<div style="margin-top:4px;font-size:10px;">';
-      html += '<span style="background:#ede9fe;color:#6d28d9;padding:2px 8px;border-radius:10px;font-weight:600;">審判: ' + g.ref + '</span>';
+    } else {
+      var venueParts = g.venue ? g.venue.split(' ') : ['',''];
+      var venueName = venueParts[0];
+      var venueTime = venueParts[1] || '';
+      var role = '';
+      if (team && team !== 'all') {
+        if (g.home === team || g.away === team) role = '出場';
+        else if (g.ref === team) role = '審判';
+      }
+      html += '<div style="display:flex;align-items:center;gap:12px;">';
+      html += '<div style="min-width:80px;border-right:1px solid var(--warm-gray);padding-right:12px;"><div style="font-size:12px;font-weight:700;color:var(--text-dark);">' + venueName + '</div><div style="font-size:10px;color:var(--text-light);">' + venueTime + '</div></div>';
+      html += '<div style="flex:1;">';
+      html += '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">';
+      html += '<span style="font-size:13px;font-weight:700;color:var(--text-dark);">' + g.home + '</span>';
+      html += '<span style="font-size:11px;color:var(--text-light);">vs</span>';
+      html += '<span style="font-size:13px;font-weight:700;color:var(--text-dark);">' + g.away + '</span>';
+      if (role === '出場') {
+        html += '<span style="font-size:9px;background:#0d9488;color:white;padding:2px 8px;border-radius:10px;font-weight:700;margin-left:4px;">出場</span>';
+      } else if (role === '審判') {
+        html += '<span style="font-size:9px;background:#7c3aed;color:white;padding:2px 8px;border-radius:10px;font-weight:700;margin-left:4px;">審判</span>';
+      }
+      html += '</div>';
+      html += '<div style="margin-top:3px;font-size:11px;color:var(--text-mid);">';
+      if (role === '審判') {
+        html += '<span style="background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:4px;font-weight:600;">審判：' + g.ref + '</span>';
+      } else {
+        html += '審判：' + g.ref;
+      }
       if (g.note) html += ' <span style="font-size:9px;color:var(--text-light);">' + g.note + '</span>';
+      html += '</div>';
       html += '</div>';
       html += '</div>';
     }
